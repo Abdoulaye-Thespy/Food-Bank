@@ -4,24 +4,31 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { categories } from '../categories';
+import CategoryFilter from '../components/filter';
 
-const Recettes = ({ category }) => {
+const Recettes = () => {
   const [foods, setFoods] = useState([]);
+  const [category, setCategory] = useState('Breakfast');
 
   useEffect(async () => {
     const foodList = [];
-    const result = await axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood');
+    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
     Array.prototype.push.apply(foodList, result.data.meals);
     setFoods(foodList);
     console.log(result);
     console.log(foods);
     console.log(category);
-  }, []);
+  }, [category]);
+
+  const handleFilterChange = value => {
+    setCategory(value);
+  };
 
   return (
     <>
       <section>
+
+        <CategoryFilter handleChange={handleFilterChange} />
 
         <div>
           <h2>Nos Ingredients </h2>
@@ -33,8 +40,6 @@ const Recettes = ({ category }) => {
             {foods.map(recette => (
               <li key={recette.idMeal}>
                 {recette.strMeal}
-                jjjjjjjjjjjjjjjjjjjjj
-                oppppppppppppppppppp
                 <img src={recette.strMealThumb} alt="" />
               </li>
             ))}
@@ -48,11 +53,9 @@ const Recettes = ({ category }) => {
 };
 
 Recettes.propTypes = {
-  category: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
-  category: state.category,
+const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = () => ({
