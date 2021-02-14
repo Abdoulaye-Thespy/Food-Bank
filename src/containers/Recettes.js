@@ -5,6 +5,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryFilter from '../components/filter';
+import filterBook from '../actions/index';
 
 const Recettes = () => {
   const [foods, setFoods] = useState([]);
@@ -58,7 +59,8 @@ Recettes.propTypes = {
 const mapStateToProps = () => ({
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = dispatch => ({
+  handleFilterChange: param => dispatch(filterBook(param)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recettes);
