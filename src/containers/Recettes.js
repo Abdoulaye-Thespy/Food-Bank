@@ -7,26 +7,26 @@ import { connect } from 'react-redux';
 import { categories } from '../categories';
 
 const Recettes = () => {
-  const [recettes, setrecettes] = useState([]);
-  const [Category, setCategory] = useState('Beef');
+  const [appState, setAppState] = useState({
+    loading: 'false',
+    foods: null,
+    category: 'Beef',
+  });
 
-  useEffect(async () => {
-    const fetchFood = ({ Category }) => {
-      const { data: { results } } = axios.get('https://www.themealdb.com/api/json/v1/1/search.php?c="Beef"');
-
-      return results;
-    };
-
-    try {
-      const data = await fetchFood();
-      setrecettes(data);
-    } catch {
-      return null;
-    }
+  useEffect(() => {
+    axios.get('https://www.themealdb.com/api/json/v1/1/search.php?c=Beef')
+      .then(res => {
+        const FoosList = res.data;
+        setAppState({
+          loading: 'false',
+          foods: FoosList,
+          category: 'Beef',
+        });
+      });
+    console.log(appState.foods);
   }, []);
 
-  console.log(recettes);
-  console.log(categories);
+  const foodList = appState.foods;
 
   return (
     <>
@@ -37,16 +37,8 @@ const Recettes = () => {
         </div>
         <div>
           <h2>Nos Recettes</h2>
-          <ul>
-            {recettes.map(recette => (
-              <li key={recette.idMeal}>
-                {recette.strMeal}
-                jjjjjjjjjjjjjjjjjjjjj
-                oppppppppppppppppppp
-                <img src={recette.strMealThumb} alt="" />
-              </li>
-            ))}
-          </ul>
+          <h2>{appState.category}</h2>
+
         </div>
 
       </section>
