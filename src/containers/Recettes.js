@@ -2,31 +2,22 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { categories } from '../categories';
 
-const Recettes = () => {
-  const [appState, setAppState] = useState({
-    loading: 'false',
-    foods: null,
-    category: 'Beef',
-  });
+const Recettes = ({ category }) => {
+  const [foods, setFoods] = useState([]);
 
-  useEffect(() => {
-    axios.get('https://www.themealdb.com/api/json/v1/1/search.php?c=Beef')
-      .then(res => {
-        const FoosList = res.data;
-        setAppState({
-          loading: 'false',
-          foods: FoosList,
-          category: 'Beef',
-        });
-      });
-    console.log(appState.foods);
+  useEffect(async () => {
+    const foodList = [];
+    const result = await axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood');
+    Array.prototype.push.apply(foodList, result.data.meals);
+    setFoods(foodList);
+    console.log(result);
+    console.log(foods);
+    console.log(category);
   }, []);
-
-  const foodList = appState.foods;
 
   return (
     <>
@@ -37,8 +28,17 @@ const Recettes = () => {
         </div>
         <div>
           <h2>Nos Recettes</h2>
-          <h2>{appState.category}</h2>
-
+          <h2>{category}</h2>
+          <ul>
+            {foods.map(recette => (
+              <li key={recette.idMeal}>
+                {recette.strMeal}
+                jjjjjjjjjjjjjjjjjjjjj
+                oppppppppppppppppppp
+                <img src={recette.strMealThumb} alt="" />
+              </li>
+            ))}
+          </ul>
         </div>
 
       </section>
@@ -48,11 +48,11 @@ const Recettes = () => {
 };
 
 Recettes.propTypes = {
-  // GetIngredients: PropTypes.func.isRequired,
-  // Ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+  category: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
+  category: state.category,
 });
 
 const mapDispatchToProps = () => ({

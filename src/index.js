@@ -6,7 +6,11 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import App from './App';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const InitialState = {
+  loading: 'false',
+  category: 'Beef',
+};
+const store = createStore(rootReducer, InitialState, applyMiddleware(thunk));
 ReactDOM.render(
   <Provider store={store}>
     <App />
