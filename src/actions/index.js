@@ -1,8 +1,8 @@
 import { FILTER_BOOK } from './types';
 
-const filterBook = filparam => ({
+const filterBook = filter => ({
   type: FILTER_BOOK,
-  payload: filparam,
+  filter,
 });
 
 export default filterBook;

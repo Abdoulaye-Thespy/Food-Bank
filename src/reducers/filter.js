@@ -1,10 +1,12 @@
 import FILTER_BOOK from '../actions/type';
 
-export default (state = 'Breakfast', { type, payload }) => {
+const Filtering = (state = 'Breakfast', { type, filter }) => {
   switch (type) {
     case FILTER_BOOK:
-      return payload;
+      return filter;
     default:
       return state;
   }
 };
+
+export default Filtering;
