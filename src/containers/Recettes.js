@@ -7,9 +7,8 @@ import { connect } from 'react-redux';
 import CategoryFilter from '../components/filter';
 import filterBook from '../actions/index';
 
-const Recettes = () => {
+const Recettes = ({ category, handleFilterChange }) => {
   const [foods, setFoods] = useState([]);
-  const [category, setCategory] = useState('Breakfast');
 
   useEffect(async () => {
     const foodList = [];
@@ -21,15 +20,16 @@ const Recettes = () => {
     console.log(category);
   }, [category]);
 
-  const handleFilterChange = value => {
-    setCategory(value);
+  const handleFilter = value => {
+    handleFilterChange(value);
+    console.log('kkkk');
   };
 
   return (
     <>
       <section>
 
-        <CategoryFilter handleChange={handleFilterChange} />
+        <CategoryFilter handleChange={handleFilter} />
 
         <div>
           <h2>Nos Ingredients </h2>
@@ -54,9 +54,12 @@ const Recettes = () => {
 };
 
 Recettes.propTypes = {
+  category: PropTypes.string.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
+  category: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({

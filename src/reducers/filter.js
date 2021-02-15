@@ -1,6 +1,7 @@
-import FILTER_BOOK from '../actions/type';
+import { FILTER_BOOK } from '../actions/types';
 
 const Filtering = (state = 'Breakfast', { type, filter }) => {
+  console.log('razak');
   switch (type) {
     case FILTER_BOOK:
       return filter;
