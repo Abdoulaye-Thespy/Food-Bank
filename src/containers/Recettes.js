@@ -59,7 +59,7 @@ Recettes.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  category: state.filter,
+  category: state.Filtering,
 });
 
 const mapDispatchToProps = dispatch => ({
