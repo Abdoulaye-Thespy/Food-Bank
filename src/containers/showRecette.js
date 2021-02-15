@@ -9,6 +9,8 @@ const Recette = ({ IdFood }) => {
   useEffect(async () => {
     const Recette = [];
     const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${IdFood}`);
+    console.log(result);
+    console.log(IdFood);
     Array.prototype.push.apply(Recette, result.data.meals);
     setRecette(Recette);
   }, []);
