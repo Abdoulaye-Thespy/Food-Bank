@@ -1,14 +1,15 @@
 import React from 'react';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function Recette({ handleChange }) {
-  return (
-    <div>
-    <h4>Notre recette<h4>
-    </div>
-  );
-}
+const Recette = ({ recette }) => (
+  <h4>
+    Recette
+    {recette.idMeal}
+  </h4>
+);
 
 Recette.propTypes = {
+  recette: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 export default Recette;

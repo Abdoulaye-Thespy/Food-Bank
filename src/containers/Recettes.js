@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryFilter from '../components/filter';
 import filterBook from '../actions/index';
+import Recette from '../components/Recette';
 
 const Recettes = ({ category, handleFilterChange }) => {
   const [foods, setFoods] = useState([]);
@@ -18,7 +18,6 @@ const Recettes = ({ category, handleFilterChange }) => {
 
   const handleFilter = value => {
     handleFilterChange(value);
-    console.log('kkkk');
   };
 
   return (
@@ -33,21 +32,9 @@ const Recettes = ({ category, handleFilterChange }) => {
         <div>
           <h2>Nos Recettes</h2>
           <h2>{category}</h2>
-          <ul>
-            {foods.map(recette => (
-              <li key={recette.idMeal}>
-                {recette.strMeal}
-                <img src={recette.strMealThumb} alt="" />
-
-                <Link
-                  to={{ pathname: `/recette/${recette.idMeal}` }}
-                  key={recette.idMeal}
-                >
-                  details
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {foods.map(recette => (
+            <Recette key={recette.idMeal} recette={recette} />
+          ))}
         </div>
 
       </section>
