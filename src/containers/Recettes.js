@@ -20,6 +20,10 @@ const Recettes = ({ category, handleFilterChange }) => {
     handleFilterChange(value);
   };
 
+  const handleDetails = idmeal => {
+    console.log(idmeal);
+  };
+
   return (
     <>
       <section>
@@ -33,7 +37,7 @@ const Recettes = ({ category, handleFilterChange }) => {
           <h2>Nos Recettes</h2>
           <h2>{category}</h2>
           {foods.map(recette => (
-            <Recette key={recette.idMeal} recette={recette} />
+            <Recette key={recette.idMeal} recette={recette} details={handleDetails} />
           ))}
         </div>
 
