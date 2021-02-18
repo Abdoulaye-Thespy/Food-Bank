@@ -1,49 +1,50 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { categories } from '../categories';
+import CategoryFilter from '../components/filter';
+import filterBook from '../actions/index';
 
-const Recettes = () => {
-  const [recettes, setrecettes] = useState([]);
-  const [Category, setCategory] = useState('Beef');
+const Recettes = ({ category, handleFilterChange }) => {
+  const [foods, setFoods] = useState([]);
 
   useEffect(async () => {
-    const fetchFood = ({ Category }) => {
-      const { data: { results } } = axios.get('https://www.themealdb.com/api/json/v1/1/search.php?c="Beef"');
+    const foodList = [];
+    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+    Array.prototype.push.apply(foodList, result.data.meals);
+    setFoods(foodList);
+  }, [category]);
 
-      return results;
-    };
-
-    try {
-      const data = await fetchFood();
-      setrecettes(data);
-    } catch {
-      return null;
-    }
-  }, []);
-
-  console.log(recettes);
-  console.log(categories);
+  const handleFilter = value => {
+    handleFilterChange(value);
+    console.log('kkkk');
+  };
 
   return (
     <>
       <section>
+
+        <CategoryFilter handleChange={handleFilter} />
 
         <div>
           <h2>Nos Ingredients </h2>
         </div>
         <div>
           <h2>Nos Recettes</h2>
+          <h2>{category}</h2>
           <ul>
-            {recettes.map(recette => (
+            {foods.map(recette => (
               <li key={recette.idMeal}>
                 {recette.strMeal}
-                jjjjjjjjjjjjjjjjjjjjj
-                oppppppppppppppppppp
                 <img src={recette.strMealThumb} alt="" />
+
+                <Link
+                  to={{ pathname: `/recette/${recette.idMeal}` }}
+                  key={recette.idMeal}
+                >
+                  details
+                </Link>
               </li>
             ))}
           </ul>
@@ -56,14 +57,16 @@ const Recettes = () => {
 };
 
 Recettes.propTypes = {
-  // GetIngredients: PropTypes.func.isRequired,
-  // Ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+  category: PropTypes.string.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
+  category: state.Filtering,
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = dispatch => ({
+  handleFilterChange: param => dispatch(filterBook(param)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recettes);

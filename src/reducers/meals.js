@@ -2,11 +2,7 @@ import {
   GET_INGREDIENTS,
 } from '../actions/types';
 
-const initialState = {
-  catergories: [],
-};
-
-export default function (state = initialState, action) {
+export default function (state = 0, action) {
   switch (action.type) {
     case GET_INGREDIENTS:
       return {
