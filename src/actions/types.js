@@ -1,4 +1,2 @@
-export const GET_INGREDIENTS = 'GET_INGREDIENTS';
-
-export const GetMenu = 'GetMenu';
+export const GET_RECETTE = 'Get_recette';
 export const FILTER_BOOK = 'FilterBook';
