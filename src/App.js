@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import Navbar from './components/navbar';
 import Recettes from './containers/Recettes';
-import Recette from './containers/showRecette';
+import RecetteDetails from './containers/showRecette';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={Recettes} />
-        <Route exact path="/recette/:id" component={Recette} />
+        <Route exact path="/recette/:id" component={RecetteDetails} />
       </Switch>
     </Router>
   );

@@ -3,7 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const Recette = ({ IdFood }) => {
+const RecetteDetails = ({ IdFood }) => {
   const [recette, setRecette] = useState([]);
 
   useEffect(async () => {
@@ -34,14 +34,15 @@ const Recette = ({ IdFood }) => {
   );
 };
 
-Recette.propTypes = {
+RecetteDetails.propTypes = {
   IdFood: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
+  idMeal: state.recette,
 });
 
 const mapDispatchToProps = () => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recette);
+export default connect(mapStateToProps, mapDispatchToProps)(RecetteDetails);

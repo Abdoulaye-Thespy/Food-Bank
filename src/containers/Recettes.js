@@ -3,10 +3,10 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryFilter from '../components/filter';
-import filterBook from '../actions/index';
+import filterBook, { getrecette } from '../actions/index';
 import Recette from '../components/Recette';
 
-const Recettes = ({ category, handleFilterChange }) => {
+const Recettes = ({ category, handleFilterChange, showDetails }) => {
   const [foods, setFoods] = useState([]);
 
   useEffect(async () => {
@@ -21,7 +21,7 @@ const Recettes = ({ category, handleFilterChange }) => {
   };
 
   const handleDetails = idmeal => {
-    console.log(idmeal);
+    showDetails(idmeal);
   };
 
   return (
@@ -50,6 +50,7 @@ const Recettes = ({ category, handleFilterChange }) => {
 Recettes.propTypes = {
   category: PropTypes.string.isRequired,
   handleFilterChange: PropTypes.func.isRequired,
+  showDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -58,6 +59,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleFilterChange: param => dispatch(filterBook(param)),
+  showDetails: param => dispatch(getrecette(param)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recettes);
