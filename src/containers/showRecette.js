@@ -4,16 +4,16 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const RecetteDetails = ({ idMeal }) => {
+const RecetteDetails = ({ idMeal, match }) => {
   const [menu, setMenu] = useState([]);
   useEffect(async () => {
-    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal.idmeal}`);
+    const { id } = match.params;
+    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
     console.log(idMeal);
-    console.log(result);
+    console.log(id);
     const Recette = result.data.meals;
     console.log(Recette[0]);
     setMenu(Recette[0]);
-    console.log(menu);
   }, []);
 
   return (
@@ -110,7 +110,7 @@ const RecetteDetails = ({ idMeal }) => {
 };
 
 RecetteDetails.propTypes = {
-  // match: PropTypes.instanceOf(Object).isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
   idMeal: PropTypes.string.isRequired,
 };
 
