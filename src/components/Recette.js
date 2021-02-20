@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Recette = ({ recette }) => (
+const Recette = ({ recette, details, id }) => (
   <section>
     <div className="img-container">
       <img src={recette.strMealThumb} alt={recette.strMeal} />
@@ -15,14 +15,13 @@ const Recette = ({ recette }) => (
       <Link
         to={{
           pathname: `/showRecette/${recette.idMeal}`,
-          state: {
-            idmeal: recette.idMeal,
-          },
         }}
         key={recette.idMeal}
         className="btn btn-info btn-details"
       >
-        details
+        <button type="button" className="btn btn-info btn-details" onClick={details(id)}>
+          Details
+        </button>
       </Link>
     </div>
   </section>
@@ -30,6 +29,8 @@ const Recette = ({ recette }) => (
 
 Recette.propTypes = {
   recette: PropTypes.objectOf(PropTypes.any).isRequired,
+  details: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 const mapStateToProps = () => ({
 

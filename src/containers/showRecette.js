@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const RecetteDetails = ({ idMeal }) => {
-  const [recette, setRecette] = useState([]);
-
+  const [menu, setMenu] = useState([]);
   useEffect(async () => {
-    const Recette = [];
-    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`);
+    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal.idmeal}`);
+    console.log(idMeal);
     console.log(result);
-    Array.prototype.push.apply(Recette, result.data.meals);
-    setRecette(Recette);
+    const Recette = result.data.meals;
+    console.log(Recette[0]);
+    setMenu(Recette[0]);
+    console.log(menu);
   }, []);
 
   return (
@@ -23,11 +25,81 @@ const RecetteDetails = ({ idMeal }) => {
         </div>
         <div>
           <h2>Nos Recettes</h2>
-          <h2>{idMeal}</h2>
-          <h2>
-            {recette}
-            {' '}
-          </h2>
+          <div className="container">
+            <h1 className="mb-4 text-center">{menu.strMeal}</h1>
+            <div className="row">
+              <div className="col-md-6 card card-body">
+                <img src={menu.strMealThumb} alt="" />
+              </div>
+
+              <div className="col-md-6 ">
+                <h2>Ingredients</h2>
+                <ul className="ingredients">
+                  <li className="item">
+                    {menu.strIngredient1}
+                    {' '}
+                    :
+                    {menu.strMeasure1}
+                  </li>
+                  <li className="item">
+                    {menu.strIngredient2}
+                    {' '}
+                    :
+                    {menu.strMeasure2}
+                  </li>
+                  <li className="item">
+                    {menu.strIngredient3}
+                    {' '}
+                    :
+                    {menu.strMeasure3}
+                  </li>
+                  <li className="item">
+                    {menu.strIngredient4}
+                    {' '}
+                    :
+                    {menu.strMeasure4}
+                  </li>
+                  <li className="item">
+                    {menu.strIngredient5}
+                    {' '}
+                    :
+                    {menu.strMeasure5}
+                  </li>
+                  <li className="item">
+                    {menu.strIngredient6}
+                    {' '}
+                    :
+                    {menu.strMeasure6}
+                  </li>
+                  <li className="item">
+                    {menu.strIngredient7}
+                    {' '}
+                    :
+                    {menu.strMeasure7}
+                  </li>
+                  <li className="item">
+                    {menu.strIngredient8}
+                    {' '}
+                    :
+                    {menu.strMeasure8}
+                  </li>
+                  <li className="item">
+                    {menu.strIngredient9}
+                    {' '}
+                    :
+                    {menu.strMeasure9}
+                  </li>
+                </ul>
+                <h2 className="instructions">Instructions</h2>
+                <p className="instruction text-justify">{menu.strInstructions}</p>
+              </div>
+            </div>
+            <Link to="/" className="text-center">
+              <button type="button" className="btn btn-info btn-details">
+                Back to Menu
+              </button>
+            </Link>
+          </div>
 
         </div>
 
@@ -38,11 +110,12 @@ const RecetteDetails = ({ idMeal }) => {
 };
 
 RecetteDetails.propTypes = {
+  // match: PropTypes.instanceOf(Object).isRequired,
   idMeal: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
-  idMeal: state.idmeal,
+  idMeal: state.recette,
 });
 
 const mapDispatchToProps = () => ({

@@ -37,7 +37,8 @@ const Recettes = ({ category, handleFilterChange, showDetails }) => {
           <h2>Nos Recettes</h2>
           <h2>{category}</h2>
           {foods.map(recette => (
-            <Recette key={recette.idMeal} recette={recette} details={handleDetails} />
+          /* eslint-disable no-debugger, max-len */
+            <Recette key={recette.idMeal} recette={recette} details={handleDetails} id={recette.idMeal} />
           ))}
         </div>
 
