@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Recette = ({ recette, details }) => (
+const Recette = ({ recette }) => (
   <section>
     <div className="img-container">
       <img src={recette.strMealThumb} alt={recette.strMeal} />
@@ -12,10 +13,14 @@ const Recette = ({ recette, details }) => (
       <h3>{recette.strCategory}</h3>
 
       <Link
-        to={{ pathname: `/recete/${recette.idMeal}` }}
+        to={{
+          pathname: `/showRecette/${recette.idMeal}`,
+          state: {
+            idmeal: recette.idMeal,
+          },
+        }}
         key={recette.idMeal}
         className="btn btn-info btn-details"
-        onclick={details(recette.idMeal)}
       >
         details
       </Link>
@@ -24,7 +29,13 @@ const Recette = ({ recette, details }) => (
 );
 
 Recette.propTypes = {
-  details: PropTypes.func.isRequired,
   recette: PropTypes.objectOf(PropTypes.any).isRequired,
 };
-export default Recette;
+const mapStateToProps = () => ({
+
+});
+
+const mapDispatchToProps = () => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recette);

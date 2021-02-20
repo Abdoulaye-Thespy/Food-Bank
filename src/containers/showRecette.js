@@ -3,14 +3,13 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const RecetteDetails = ({ IdFood }) => {
+const RecetteDetails = ({ idMeal }) => {
   const [recette, setRecette] = useState([]);
 
   useEffect(async () => {
     const Recette = [];
-    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${IdFood}`);
+    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`);
     console.log(result);
-    console.log(IdFood);
     Array.prototype.push.apply(Recette, result.data.meals);
     setRecette(Recette);
   }, []);
@@ -24,8 +23,12 @@ const RecetteDetails = ({ IdFood }) => {
         </div>
         <div>
           <h2>Nos Recettes</h2>
-          <h2>{IdFood}</h2>
-          <h2>{recette}</h2>
+          <h2>{idMeal}</h2>
+          <h2>
+            {recette}
+            {' '}
+          </h2>
+
         </div>
 
       </section>
@@ -35,11 +38,11 @@ const RecetteDetails = ({ IdFood }) => {
 };
 
 RecetteDetails.propTypes = {
-  IdFood: PropTypes.string.isRequired,
+  idMeal: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
-  idMeal: state.recette,
+  idMeal: state.idmeal,
 });
 
 const mapDispatchToProps = () => ({
