@@ -10,9 +10,7 @@ const RecetteDetails = ({ idMeal, match }) => {
     const { id } = match.params;
     const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
     console.log(idMeal);
-    console.log(id);
     const Recette = result.data.meals;
-    console.log(Recette[0]);
     setMenu(Recette[0]);
   }, []);
 

@@ -30,12 +30,11 @@ const Recettes = ({ category, handleFilterChange, showDetails }) => {
 
         <CategoryFilter handleChange={handleFilter} />
 
-        <div>
-          <h2>Nos Ingredients </h2>
-        </div>
-        <div>
-          <h2>Nos Recettes</h2>
-          <h2>{category}</h2>
+        <h2 className="">
+          Category:
+          {category}
+        </h2>
+        <div className="recettes">
           {foods.map(recette => (
           /* eslint-disable no-debugger, max-len */
             <Recette key={recette.idMeal} recette={recette} details={handleDetails} id={recette.idMeal} />
