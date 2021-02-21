@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import CategoryFilter from '../components/filter';
 import filterBook, { getrecette } from '../actions/index';
 import Recette from '../components/Recette';
+import Loading from '../components/loading';
 
 const Recettes = ({ category, handleFilterChange, showDetails }) => {
   const [foods, setFoods] = useState([]);
@@ -26,6 +27,7 @@ const Recettes = ({ category, handleFilterChange, showDetails }) => {
 
   return (
     <>
+      <Loading />
       <section>
 
         <CategoryFilter handleChange={handleFilter} />
