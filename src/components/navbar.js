@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './components.css';
 
 export default function Navbar() {
   return (
     <nav>
-      <div>
+      <div className={styles.navbar}>
         <Link to="/">
           <h1>Recettes</h1>
         </Link>

@@ -13,7 +13,7 @@ function CategoryFilter({ handleChange }) {
           handleChange(e.target.value);
         }}
       >
-        <option value="Seafood">Seafood</option>
+        <option value="Seafood">Breakfast</option>
         {Categories.map(e => (
           <option value={e} key={e}>
             {e}
