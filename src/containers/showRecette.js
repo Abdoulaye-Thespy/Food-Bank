@@ -3,18 +3,23 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Loading from '../components/loading';
 
 const RecetteDetails = ({ idMeal, match }) => {
   const [menu, setMenu] = useState([]);
+  const [Uloading, setUloading] = useState(true);
   useEffect(async () => {
     const { id } = match.params;
     const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
     console.log(idMeal);
     const Recette = result.data.meals;
     setMenu(Recette[0]);
+    setUloading(false);
   }, []);
 
-  return (
+  return Uloading === true ? (
+    <Loading />
+  ) : (
     <>
       <section>
 

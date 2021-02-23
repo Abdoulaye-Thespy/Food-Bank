@@ -9,12 +9,14 @@ import Loading from '../components/loading';
 
 const Recettes = ({ category, handleFilterChange, showDetails }) => {
   const [foods, setFoods] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(async () => {
     const foodList = [];
     const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
     Array.prototype.push.apply(foodList, result.data.meals);
     setFoods(foodList);
+    setLoading(false);
   }, [category]);
 
   const handleFilter = value => {
@@ -25,9 +27,10 @@ const Recettes = ({ category, handleFilterChange, showDetails }) => {
     showDetails(idmeal);
   };
 
-  return (
+  return loading === true ? (
+    <Loading />
+  ) : (
     <>
-      <Loading />
       <section>
 
         <CategoryFilter handleChange={handleFilter} />
