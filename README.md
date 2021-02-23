@@ -1,1 +1,75 @@
-# Food-Bank
+Food-Bank
+Foo-Bank is a React web application that retrieves data from 'The Meal DB' API. A visitor can select the food menu by choosing any category from the dropdown and can also view the full details of each meal by clicking on the details. It is built using React/Redux.
+
+## snapshot
+![Tasty-Menu](snapshot.png)
+![Tasty-Menu](snapshot2.PNG)
+
+## live demo
+[Tasty-Menu app](https://9fc41c3539f543faa4e8a426d7ce183d.vfs.cloud9.us-east-2.amazonaws.com/)
+
+## Video Presentation
+(https://www.loom.com/share/d93d78b9447c49c9a269bba8bf7d8693)
+Second video: (https://www.loom.com/share/5a70f6ed79224b6f81d277cd6456f3a3)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Features
+- A list of food menu from different countries .
+- You can see the categories of the food by filtering them.
+- When an item in the menu is clicked, the details will be displayed.
+- You can navigate back to the home page by clicking on the button below.
+
+## Potential Features
+- Search Form by category.
+
+
+## Built with
+- React
+- HTML
+- CSS
+- JavaScript/ES6
+- React Hooks
+- React Router
+- Redux
+- Boostrap
+- React Redux
+- Meals DB
+- Netlify
+
+### Prerequisites
+
+- Node
+- Npm
+
+### Setup
+
+- git clone `https://github.com/Abdoulaye-Thespy/Food-Bank.git`
+- cd Food-Bank
+- run npm install
+- run npm run start
+
+## Author
+
+👤 **Njigouh Abdoulaye Razak**
+
+- Github: [@githubhandle](https://github.com/Abdoulaye-Thespy)
+- Twitter: [@twitterhandle](https://twitter.com/AbdoulayeThe)
+- Linkedin: [linkedin](https://www.linkedin.com/in/njigouh-abdoulaye-razak/)
+
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Abdoulaye-Thespy/Food-Bank/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse
+- Microverse TSEs
+
