@@ -27,7 +27,6 @@ const RecetteDetails = ({ idMeal, match }) => {
           <h2>Nos Ingredients </h2>
         </div>
         <div>
-          <h2>Nos Recettes</h2>
           <div className="container">
             <h1 className="mb-4 text-center">{menu.strMeal}</h1>
             <div className="row">

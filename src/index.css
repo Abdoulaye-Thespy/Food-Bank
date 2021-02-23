@@ -1,3 +1,19 @@
+:root {
+  --primaryColor: #476a2e;
+  --mainOverlay: rgba(35, 10, 36, 0.4);
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+  --mainRed: #bd0303;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 0.3rem;
+  --lightShadow: 2px 5px 3px 0 rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0 rgba(0, 0, 0, 0.5);
+  --mainBorderRadius: 0.25rem;
+  --smallWidth: 85vw;
+  --maxWidth: 40rem;
+  --fullWidth: 1170px;
+}
 npx body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,8 +28,41 @@ code {
     monospace;
 }
 
-.recette {
+.recettes {
   display: grid;
-  width: 80%;
-  margin: auto;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 2rem;
+  align-items: start;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+@media screen and (min-width: 576px) {
+  .meals-center {
+    grid-template-columns: repeat(auto-fill, minmax(338.8px, 1fr));
+  }
+}
+
+.meal {
+  background: var(--mainWhite);
+  margin-bottom: 2rem;
+  box-shadow: var(--lightShadow);
+  transition: var(--mainTransition);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border-radius: var(--mainBorderRadius);
+}
+
+.meal:hover {
+  box-shadow: var(--darkShadow);
+}
+
+.meal img {
+  height: 20rem;
+  object-fit: cover;
+  border-top-left-radius: var(--mainBorderRadius);
+  border-top-right-radius: var(--mainBorderRadius);
 }

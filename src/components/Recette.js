@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Recette = ({ recette, details, id }) => (
-  <section>
+  <section className="meal">
     <div className="img-container">
       <img src={recette.strMealThumb} alt={recette.strMeal} />
     </div>
