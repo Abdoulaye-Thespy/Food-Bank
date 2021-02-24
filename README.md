@@ -2,15 +2,14 @@ Food-Bank
 Foo-Bank is a React web application that retrieves data from 'The Meal DB' API. A visitor can select the food menu by choosing any category from the dropdown and can also view the full details of each meal by clicking on the details. It is built using React/Redux.
 
 ## snapshot
-![Tasty-Menu](snapshot.png)
-![Tasty-Menu](snapshot2.PNG)
+![Food-Bank](Screenshot_2021-02-23 FOOD-BANK.jpg)
+
 
 ## live demo
 [Tasty-Menu app](https://9fc41c3539f543faa4e8a426d7ce183d.vfs.cloud9.us-east-2.amazonaws.com/)
 
 ## Video Presentation
-(https://www.loom.com/share/d93d78b9447c49c9a269bba8bf7d8693)
-Second video: (https://www.loom.com/share/5a70f6ed79224b6f81d277cd6456f3a3)
+(https://www.loom.com/share/5b69a0b6a38c4e66b3c869f8403a0518)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
