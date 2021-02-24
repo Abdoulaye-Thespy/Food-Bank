@@ -23,10 +23,6 @@
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "resolutions": {
-      "browserslist": "4.6.2",
-      "caniuse-lite": "1.0.30000974"
-    },
     "web-vitals": "^0.2.4"
   },
   "scripts": {
