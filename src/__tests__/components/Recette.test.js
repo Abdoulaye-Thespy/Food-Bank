@@ -22,10 +22,14 @@ describe('Recette component', () => {
     expect(page).not.toBeFalsy();
     expect(page).toMatchSnapshot();
   });
+  test('should have a image url', () => {
+    const image = page.find('img');
+    expect(image.prop('src')).toEqual(recetteTrial.recette.strMealThumb);
+    expect(image.prop('src')).not.toEqual('');
+  });
 
   test('should have a link to detail page', () => {
     const LinkToDetailPage = page.find(Link);
-
     expect(LinkToDetailPage).toHaveLength(1);
     expect(LinkToDetailPage).not.toHaveLength(0);
     expect(LinkToDetailPage.text()).toEqual('Details');
