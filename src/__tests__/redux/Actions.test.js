@@ -3,12 +3,12 @@ import { GET_RECETTE, FILTER_BOOK } from '../../actions/types';
 
 describe('filterBook action', () => {
   test('should generate a filter action', () => {
-    const category = 'Beff';
-    const actionObj = filterBook(category);
+    const filter = 'Beef';
+    const actionObj = filterBook(filter);
 
     expect(actionObj).toEqual({
       type: FILTER_BOOK,
-      payload: category,
+      filter,
     });
     expect(actionObj).not.toEqual({});
   });
@@ -21,7 +21,7 @@ describe('Get recette Action', () => {
 
     expect(foodObj).toEqual({
       type: GET_RECETTE,
-      payload: idmeal,
+      idmeal,
     });
     expect(foodObj).not.toEqual([]);
   });
