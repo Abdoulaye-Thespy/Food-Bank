@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -32,11 +31,4 @@ Recette.propTypes = {
   details: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
 };
-const mapStateToProps = () => ({
-
-});
-
-const mapDispatchToProps = () => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Recette);
+export default Recette;
