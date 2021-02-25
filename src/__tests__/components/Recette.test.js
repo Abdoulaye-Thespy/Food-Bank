@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../setupTests';
 import shallowWrapper from '../../setupTests';
 import Recette from '../../components/Recette';
@@ -23,7 +24,7 @@ describe('Recette component', () => {
   });
 
   test('should have a link to detail page', () => {
-    const LinkToDetailPage = page.find('.btn btn-info btn-details');
+    const LinkToDetailPage = page.find(Link);
 
     expect(LinkToDetailPage).toHaveLength(1);
     expect(LinkToDetailPage).not.toHaveLength(0);

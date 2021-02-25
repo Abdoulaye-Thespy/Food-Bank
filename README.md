@@ -35,6 +35,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - React Redux
 - Meals DB
 - Netlify
+- AWS Cloud 9
+- Amplify (AWS)
 
 ### Prerequisites
 
