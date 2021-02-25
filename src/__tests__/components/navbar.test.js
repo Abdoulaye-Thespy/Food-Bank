@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import Navbar from '../../components/navbar';
 import shallowWrapper from '../../setupTests';
-import { Link } from 'react-router-dom';
 
 describe('Navigation bar', () => {
   const nav = shallowWrapper(Navbar);

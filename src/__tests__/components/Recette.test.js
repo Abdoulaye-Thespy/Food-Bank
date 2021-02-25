@@ -1,11 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../setupTests';
 import shallowWrapper from '../../setupTests';
+
 import Recette from '../../components/Recette';
 
 describe('Recette component', () => {
-  
   const recetteTrial = {
     recette: {
       idMeal: '52895',
@@ -15,7 +13,7 @@ describe('Recette component', () => {
     details: jest.fn(),
     id: '1',
   };
-    const page = shallowWrapper(Recette, recetteTrial);
+  const page = shallowWrapper(Recette, recetteTrial);
 
   test('should render page', () => {
     expect(page).toBeTruthy();

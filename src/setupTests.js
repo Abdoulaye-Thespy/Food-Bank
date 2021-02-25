@@ -2,9 +2,11 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable  react/jsx-props-no-spreading */
 import '@testing-library/jest-dom';
-import Enzyme from 'enzyme';
-import { shallow } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
+
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
