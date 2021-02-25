@@ -6,7 +6,7 @@ Foo-Bank is a React web application that retrieves data from 'The Meal DB' API. 
 
 
 ## live demo
-[Tasty-Menu app](https://9fc41c3539f543faa4e8a426d7ce183d.vfs.cloud9.us-east-2.amazonaws.com/)
+[Tasty-Menu app](https://spa.d21acy6av6ta0x.amplifyapp.com/)
 
 ## Video Presentation
 (https://www.loom.com/share/5b69a0b6a38c4e66b3c869f8403a0518)
